@@ -1116,5 +1116,81 @@ if ($action == "email") {
 	
 }
 
+/**  Added by DRF
+ * Added to provide a way to toggle status on the
+ * Drop-off Table and Sponsor Table
+ *  ##### Need to identify when the user is logged in and which rights they have
+ *  ##### Current code will allow for malisious behaviour AKA passing the right
+ *  ##### URL will cause the database to change
+ *  ##### Ex: http://localhost/bcoe/includes/ajax_functions.inc.php?action=toggle&go=sponsors&id=13
+ **/
+try{
+    if ($action == "toggle"){
+
+        if( isset($_GET['id'] )){
+			$_id     = strtolower( $_GET['id'] );
+        }
+
+        if( isset( $_GET['go'] )) {
+            $_for    = strtolower( $_GET['go'] );
+        }
+
+		switch($_for){
+        case "drop-off" :
+			$_table = "drop_off";
+			$_field = "dropLocationstatus";
+			$queue  = 1;
+			break;
+		case "sponsors" :
+			$_table = "sponsors";
+			$_field = "sponsorEnable";
+			$queue  = 1;
+			break;
+		case "json" :
+
+			$json = json_decode($_GET['payload'], True);
+			
+			switch($json['field']){
+			case "inc_flight_sheet": 
+			case "inc_cover_sheet": 
+			case "inc_specialty_sheet": 
+			case "inc_page_header":
+			case "inc_scoresheets" :
+			case "sponsor_theme": 
+			case "inc_comp_header": 
+			case "inc_cat_sponsors":
+			case "inc_qrcodes":
+			case "inc_tracking_numbers":
+			case "tracking_numbers_assigned":
+				$_table = "judging_packet_preferences";
+				$_field = $json['field'];
+				$_value = $json['value'];
+				$queue  =2 ;
+				break;
+			default:
+				die;
+			}
+			break;
+		default:
+			die;
+        }
+
+		switch($queue){
+		case 1:
+			$query = "UPDATE `" . $_table . "` SET `" . $_field . "` = IF(`" . $_field . "`=1, 0, 1) WHERE `id`='" . $_id . "';";
+			break;
+		case 2:
+			$query = "UPDATE `" . $_table . "` SET `" . $_field . "` = " . $_value .";";
+			break;
+		default:
+			die;
+		}
+
+		$sql_check = mysqli_query($connection,$query) or die (mysqli_error($connection));
+    }
+} 
+catch(Exeption $e){
+    echo($e);
+}
 
 ?>

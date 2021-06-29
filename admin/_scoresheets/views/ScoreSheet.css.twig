@@ -1,0 +1,58 @@
+<style type="text/css"> 
+   .jpk-hide { display : none; }
+   .jpk-menu { position:relative; border: 1px solid black; }
+   .jpk-workspace { border: 1px solid black; float:left; }
+
+   .jpk-options {position:relative; background-color: #aaa; padding-left:16px;}
+
+   .jpk-page {border: 1px solid black; width : 320px; height : 420px; position:relative; margin: 5px; float:left; box-shadow: 5px 5px 2px #888888; }
+
+   .jpk-coversheet           { background: url({{ url_ScrShtImages }}Jpk_CoverSheet.png)     0px    0px no-repeat; }
+   .jpk-coversheet-sponsor   { background: url({{ url_ScrShtImages }}Jpk_CoverSheets_TS.png) 0px    0px no-repeat; }
+   .jpk-specialtysheet       { background: url({{ url_ScrShtImages }}Jpk_Specialty.png)     0px    0px no-repeat; }
+   .jpk-flightsheet          { background: url({{ url_ScrShtImages }}Jpk_FlightSummary.png)  0px    0px no-repeat; }
+   .jpk-scoresheet-long      { background: url({{ url_ScrShtImages }}Jpk_ScoreSheet.png)     0px    0px no-repeat; }
+   .jpk-scoresheet-short     { background: url({{ url_ScrShtImages }}Jpk_ScoreSheet_Chk.png) 0px    0px no-repeat; }
+   
+   .jpk-image-sprwrp    { z-index: 2000; display : block; background : url("{{ url_ScrShtImages }}Jpk_Sponsor_Wrapper.png")    0 0 / 65px auto transparent no-repeat; }
+
+   .jpk-sponsorimg      { z-index: 1000; position: absolute; height: 40px; width: 65px; background : url("{{ url_ScrShtImages }}Jpk_Sponsor_Wrapper.png?{{ "now"|date("h:i:s") }}")    0 0 / 65px auto transparent no-repeat; }
+
+   .jpk-sponsorimg-l      {  z-index: 1500; top:  7px;    left:  5px; }
+   .jpk-sponsorimg-rotl   {  z-index: 1500; top:   21px; right: -9px; }
+   .jpk-sponsorimg-r      {  z-index: 1500; top:  7px;   right:  3px; }   
+   .jpk-sponsorimg-rotr   {  z-index: 1500; top:  363px; right: -9px; }
+
+    [class*="jpk-coversheet"] > .jpk-qrcode { background-color: white; position: absolute; top: 177px; height: 41px;  left: 139px; width:41px; z-index: 2000; display : block; background : url("{{ url_ScrShtImages }}Jpk_qrcode.png") 0 0 / 41px auto transparent no-repeat; }
+   .jpk-scoresheet-long       > .jpk-qrcode { background-color: white; position: absolute; top: 370px; height: 38px;  left: 166px; width:38px; z-index: 2000; display : block; background : url("{{ url_ScrShtImages }}Jpk_qrcode.png") 0 0 / 37px auto transparent no-repeat; }
+   .jpk-scoresheet-short      > .jpk-qrcode { background-color: white; position: absolute; top: 355px; height: 38px;  left: 149px; width:38px; z-index: 2000; display : block; background : url("{{ url_ScrShtImages }}Jpk_qrcode.png") 0 0 / 37px auto transparent no-repeat; }
+
+   .jpk-trackno       { background-color: black; position: absolute; top: 189px; height: 18px; right: 113px; width:19px; }
+   
+   .jpk-rotate{
+      -webkit-transform:rotate(90deg);
+      -moz-transform:rotate(90deg);
+      -o-transform:rotate(90deg);
+      -ms-transform:rotate(90deg);
+      transform:rotate(90deg);
+   }
+   
+   .jpk-image-hd-col            { background-color: transparent; position: absolute; top:   9px; height:  21px; left: 71px; right: 71px; }
+   .jpk-image-hd-col.jpk-rotate { background-color: transparent; position: absolute; height: 22px; left: 203px; top: 211px; width: 202px; }
+
+   .jpk-image-header-img  { z-index: 2000; display : none; background : url("{{ packetImages['jpk-image-hd'] }}?{{ "now"|date("h:i:s") }}") 0 0 / 186px auto transparent no-repeat; }
+   .jpk-image-header-txt  { z-index: 2000; display : none; background : url("{{ packetImages['jpk-image-hd-txt'] }}?{{ "now"|date("h:i:s") }}") 0 0 / 186px auto transparent no-repeat; }
+   .jpk-image-lh-col  { position: absolute; top:  52px; left:  5px; height: 168px; width: 100px; z-index: 2000; display : block; background : url("{{ packetImages['jpk-image-lh'] }}?{{ "now"|date("h:i:s") }}")    0 0 / 100px auto transparent no-repeat; }
+   .jpk-image-rh-col  { position: absolute; top:  52px; right: 5px; height: 168px; width: 100px; z-index: 2000; display : block; background : url("{{ packetImages['jpk-image-rh'] }}?{{ "now"|date("h:i:s") }}")    0 0 / 100px auto transparent no-repeat; }
+   .jpk-image-cn-col  { position: absolute; top: 223px; left:  5px; height: 183px; right:   5px; z-index: 2000; display : block; background : url("{{ packetImages['jpk-image-cn'] }}?{{ "now"|date("h:i:s") }}")    0 0 / 310px auto transparent no-repeat; }
+
+   .jpk-page-count {
+      font-size: 65px; width : 100%; top: 111px; text-align:
+      center; z-index: 1000; font-family: "Love Ya Like A Sister"; position: absolute; color: black;
+      text-shadow: 0.1em 0.1em 0.2em black;
+   }
+
+</style>
+
+
+

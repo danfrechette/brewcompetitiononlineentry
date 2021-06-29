@@ -27,9 +27,9 @@ if (HOSTED) check_hosted_gh();
 // Get current version from DB
 if (table_exists($prefix."system")) {
 
-	$query_system = sprintf("SELECT version FROM %s", $prefix."system");
-	$system = mysqli_query($connection,$query_system) or die (mysqli_error($connection));
-	$row_system = mysqli_fetch_assoc($system);
+    $query_system = sprintf("SELECT version FROM `%s`", $prefix."system");
+    $system = mysqli_query($connection,$query_system) or die (mysqli_error($connection));
+    $row_system = mysqli_fetch_assoc($system);
     $version = $row_system['version'];
 
 }

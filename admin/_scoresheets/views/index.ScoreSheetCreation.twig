@@ -1,0 +1,260 @@
+   {{ include('ScoreSheet.css.twig') }}
+
+   <h2>Judging Packets</h2>
+
+   <p>
+      Using this tool you can create customized judging packets for your competition.  Each packet is designed to organize and speed up your judging day by providing the following features:
+      <ol start="1" type="1">
+         <li>Pre-filled Flight Sheets of the items which will be judged.</li>
+         <li>Complete list of all the specialty items which are noted for the entires.</li>
+         <li>Pre-filled Coversheets.</li>
+         <li>Pre-filled judging sheets which include Category, Sub-Category, Judging Number, and specialty ingredients.</li>
+      </ol>
+   </p>
+
+   <div class="row container-fluid">
+      <div class="col-sm-3 jpk-menu"> {# Menu #}
+         <div class="row"> <h3>Judging Package Settings</h3></div>
+         {% include '_GroupButtons.twig' with {
+            'label':'Flight List', 
+            'id':'inc_flight_sheet', 
+            'url' : url_action ,
+            'buttons': controls.inc_flight_sheet ,
+            'helpmsg':"The Flight list proves a sheet where your judges and stewards can track the scores of each of the entries  o form, which is used to track the scores and entries which are being judged.  Typically these forms are given to the Stewards or Judges."
+         } %}
+
+         {% include '_GroupButtons.twig' with {
+            'label':'Specialty List', 
+            'id':'inc_specialty_sheet', 
+            'url' : url_action ,
+            'buttons': controls.inc_specialty_sheet ,
+            'helpmsg':"The Specialty list is an unabridged report of the comments and ingredients which were entered by the contestants.  The Specialty list when enabled will create a report when a category contains specialty items."
+         } %}
+         
+         {% include '_GroupButtons.twig' with {
+            'label':'Cover Sheets', 
+            'id':'inc_cover_sheet', 
+            'url' : url_action ,
+            'buttons':controls.inc_cover_sheet ,
+            'helpmsg':"The cover sheet is used to provide the overall score and placement of an entry.  In addition the coversheet has detailed descritpion of the juding process for the entrant, therefore each entrant automatically recieves one sheet.  If you choose to use the Theme For Sponsor version The Theme For Sponsorship option allows you to create custom layouts on your cover sheets. The Cover Sheet are broken in to three sections: Left Column, Right Column and the Main Body. Each area you wish to assign an image to will require an image which can be uploaded by selecting it form the coversheet. Images which are uploaded which will automatically adjust to best fit the region.  For best results use images which have been formated in the following manor:"
+         } %}
+
+         <div id = "inc_cover_sheet-options-3">
+            {% include '_FileInput.twig' with {'id':'jpk-image-lh', 'label':'Upload Left Column Image'  , 'info':'For best results format your image to be at a height and width of  630 x 375 pixels at 72 DPI' }  %}
+            {% include '_FileInput.twig' with {'id':'jpk-image-rh', 'label':'Upload Right Column Image' , 'info':'For best results format your image to be at a height and width of  630 x 375 pixels at 72 DPI' }  %}
+            {% include '_FileInput.twig' with {'id':'jpk-image-cn', 'label':'Upload Main Body Image'    , 'info':'For best results format your image to be at a height and width of  1190 x 700 pixels at 72 DPI' } %}
+         </div>
+         
+         {% include '_GroupButtons.twig' with {
+            'label':'Page Header', 
+            'id':'inc_page_header', 
+            'url' :  url_action,
+            'buttons': controls.inc_page_header ,
+            'helpmsg':""
+         } %}
+         <div id = "inc_page_header-options-3">
+            {% include '_FileInput.twig' with {'id':'jpk-image-hd', 'label':'Upload Header Image'  , 'info':'For best results format your image to be at a height and width of  ? x ? pixels at 72 DPI' }  %}
+         </div>
+
+         {% include '_GroupButtons.twig' with {
+            'label':'Score Sheets', 
+            'id':'inc_scoresheets', 
+            'url' :  url_action ,
+            'buttons': controls.inc_scoresheets ,
+            'helpmsg':""
+         } %}
+         
+         {% include '_GroupButtons.twig' with {
+            'label':"Tracking No.", 
+            'id':'inc_tracking_numbers', 
+            'url' :  url_action ,
+            'buttons': controls.inc_tracking_numbers ,
+            'helpmsg':"The tracking number is a unique random id which is assigned to each contestant.  When activated the tracking number is displayed on the cover sheet in the lower righthand corner.  The primary purpose of the tracking number is to help staff members in relate the score sheets back to a contestant and to provide a method to group score sheets without knowing who the sheets belong too. "
+         } %}
+
+         {% include '_GroupButtons.twig' with {
+            'label':'Style Sponsors', 
+            'id':'inc_cat_sponsors',
+            'url' :  url_action , 
+            'buttons': controls.inc_cat_sponsors ,
+            'helpmsg':"Sponsors who have been flagged as category sponsors can have their logo's displayed in the upper hand corners of the cover sheets and score sheets. In order for an image to display as a category sponsor the following must have been taken. Upload your sponsors image using the <a href='<<<>>>'> Sponsorship/Image Gallery.  Create a new contact if your sponsor is not in your Contacts List or Active Sponsors List Associate the sponsor image to your sponsor.  Assign the Sponsor to a Category."
+         } %}
+
+         {% include '_GroupButtons.twig' with {
+            'label':'QR-Codes', 
+            'id':'inc_qrcodes', 
+            'url' :  url_action ,
+            'buttons': controls.inc_qrcodes ,
+            'helpmsg':"The QR-Code option allows you to imbed a unique barcode to each of the cover sheets and score sheets which are printed out.  Each QR-Code contains a Tracking Number, Judging Number and Entry Number and a Time stamp.  If your competition has the ability to scan and post-process the images using QR-Codes, then this feature may help you arrange the sheets automatically.  Please review the follow notes pertaining to the use of barcodes: When using this feature each sheet is unique and should not be photocopied. If a new sheet is required due to damage or lost your team should generate a new sheet from the >>>????<<<<. Depending on the software you are using to post-process the images duplicated score sheets may overwrite existing sheets.  In order to maintain a smaller file size you can see if your scanner will allow you to configure the dpi and resolution of the scan."
+         } %}
+
+         <div class="col container">
+            <a class="btn btn-sm btn-primary "  href='#'> Create Packets </a>
+         </div>
+
+         {# <a class="btn btn-sm btn-primary" href="<?php echo $base_url; ?>index.php?section=admin&amp;go=upload"><span class="fa fa-upload"></span> Upload Logo Images</a> #}
+   
+      </div>{# End of Menu #}
+
+      <div class="col-sm-9">{# Work Palet #}
+      
+         <div id="inc_flight_sheet-2" class='jpk-page jpk-flightsheet'style="display: {{ packet_options.inc_flight_sheet.status ? 'block' :'none' }}">
+            <div class="jpk-image-hd-col jpk-rotate jpk-image-header-txt "></div>
+            <div class="jpk-image-hd-col jpk-rotate jpk-image-header-img "></div>
+            <div class="jpk-sponsorimg jpk-sponsorimg-rotl jpk-rotate"></div>
+            <div class="jpk-sponsorimg jpk-sponsorimg-rotr jpk-rotate"></div>
+         </div>
+
+         <div id="inc_specialty_sheet-2" class='jpk-page jpk-specialtysheet'style="display: {{ packet_options.inc_specialty_sheet.status ? 'block' :'none' }}"></div>
+
+         <div id="inc_cover_sheet-2"  class='jpk-page jpk-coversheet' style="display: {{ packet_options.inc_cover_sheet.status ? 'block' :'none' }}">
+            <div class="jpk-image-hd-col jpk-image-header-txt"></div>
+            <div class="jpk-image-hd-col jpk-image-header-img"></div>
+            <div class="jpk-trackno"></div>
+            <div class="jpk-qrcode"></div>
+            <div class="jpk-sponsorimg jpk-sponsorimg-l"></div>
+            <div class="jpk-sponsorimg jpk-sponsorimg-r"></div>
+         </div>
+
+         <div id="inc_cover_sheet-3" class='jpk-page jpk-coversheet-sponsor' style="display: {{ packet_options.inc_cover_sheet.status ? 'block' :'none' }}">
+            <div class="jpk-image-hd-col jpk-image-header-txt"></div>
+            <div class="jpk-image-hd-col jpk-image-header-img"></div>
+            <div class="jpk-image-lh-col"></div>
+            <div class="jpk-image-rh-col"></div>
+            <div class="jpk-image-cn-col"></div>
+            
+            <div class="jpk-qrcode"></div>
+            <div class="jpk-trackno"></div>
+            <div class="jpk-sponsorimg jpk-sponsorimg-l"></div>
+            <div class="jpk-sponsorimg jpk-sponsorimg-r"></div>
+         </div>
+
+         <div id="inc_scoresheets-2" class='jpk-page jpk-scoresheet-long'>
+            <div class="jpk-sponsorimg jpk-sponsorimg-l"></div>
+            <div class="jpk-image-hd-col jpk-image-header-txt"></div>
+            <div class="jpk-image-hd-col jpk-image-header-img"></div>
+            <div class="jpk-sponsorimg jpk-sponsorimg-r"></div>
+            <div class="jpk-qrcode"></div>
+         </div>
+
+         <div id="inc_scoresheets-3" class='jpk-page jpk-scoresheet-short'>
+            <div class="jpk-sponsorimg jpk-sponsorimg-l"></div>
+            <div class="jpk-image-hd-col jpk-image-header-txt"></div>
+            <div class="jpk-image-hd-col jpk-image-header-img"></div>
+            <div class="jpk-sponsorimg jpk-sponsorimg-r"></div>
+            <div class="jpk-qrcode"></div>
+         </div>
+      </div>{# End of Work Palet #}
+   </div>
+</div>
+
+<script type="text/javascript" >
+
+   $(".btn-group>button").click(
+      function (){ 
+         $parent =  $(this).parent();
+         $parent.children().removeClass("btn-success");
+         $(this).addClass("btn-success");
+
+         if( $(this).parent().data('url') && $(this).data("value") ){
+            $_url = $(this).parent().data('url')
+            $value = $(this).data("value");
+
+            $field = $(this).parent().data('id')
+            $payload = JSON.stringify( {'field':$field,value:$value} );
+            $_url = $_url.concat("&go=json&payload=" + $payload);  
+
+            updatePage($field, $value);
+
+            $.ajax({
+               url: $_url
+            })
+            .fail (function(jqXHR, textStatus, errorThrown) {
+               alert("Error");
+            });
+
+            return false;
+         }
+      }
+   );
+
+   function updatePage($field, $value){
+      $("[id^=" + $field + "]").hide()
+      
+      switch($field) {
+      case "inc_flight_sheet": 
+      case "inc_specialty_sheet": 
+      case "inc_cover_sheet":       
+      case "inc_scoresheets" :
+         $("[id^=" + $field + "-" + $value + "]").show()
+         break;
+      case "inc_page_header":
+         switch (parseInt($value)){
+            case 2 : 
+               $("[class*=jpk-image-header-img").hide();
+               $("[class*=jpk-image-header-txt").show();
+               break;
+            case 3 : 
+               $("[class*=jpk-image-header-img").show();
+               $("[class*=jpk-image-header-txt").hide();
+               break;
+            default : 
+               $("[class*=jpk-image-header-img").hide();
+               $("[class*=jpk-image-header-txt").hide();
+               break;
+         }
+         break;
+      case "inc_comp_header": 
+         $("[class*=jpk-image-hd-col]")[($value > 1 ? 'show' :'hide')]();
+         break;
+      case "inc_cat_sponsors":
+         $("[class*=jpk-sponsorimg]")[($value > 1 ? 'show' :'hide')]();
+         break;
+      case "inc_qrcodes":
+         $("[class*=jpk-qrcode]")[($value > 1 ? 'show' :'hide')]();
+         break;
+      case "inc_tracking_numbers":
+         $("[class^=jpk-trackno]")[($value > 1 ? 'show' :'hide')]();
+         break;
+      }
+
+      $("[id^=" + $field + "-options-" + $value + "]").show()
+   }
+
+   async function upload_image(input){
+      let formData = new FormData();
+      let files = input.files[0];      
+      
+      formData.append("file", files);
+      
+      $_url = '{{ base_url }}handle.php?action=html&imageID=' + input.id;
+
+      $.ajax({
+         async : true, 
+         url : $_url , 
+         data: formData,
+         processData: false,
+         contentType: false,
+         type : "POST",
+         success: function(data) {
+            var json = $.parseJSON(data);
+            if(json.status){
+               if(input.id == "jpk-image-hd"){
+                  $(".jpk-image-header-img" ).css("background-image", "url(" + json.image + "?" + Date.now() +")"); 
+               }else{
+                  $("." + input.id + "-col" ).css("background-image", "url(" + json.image + "?" + Date.now() +")");       
+               }               
+            } else {
+               console.error("Fucking Failed");
+            }
+         }
+      });
+   }
+
+   $( document ).ready(function() {
+      {% for id, value in packet_options %}
+         updatePage('{{ id }}', '{{ value }}')
+      {% endfor %}
+   });
+   
+</script>

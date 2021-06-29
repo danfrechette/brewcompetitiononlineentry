@@ -16,12 +16,12 @@ $output .= "<ul>";
 
 if (!check_update("sponsorEnable", $prefix."sponsors")) {
 
-	$updateSQL = "ALTER TABLE `".$prefix."sponsors` ADD `sponsorEnable` TINYINT(1) NULL;";
-	mysqli_select_db($connection,$database);
-	mysqli_real_escape_string($connection,$updateSQL);
-	$result = mysqli_query($connection,$updateSQL) or die (mysqli_error($connection));
+    $updateSQL = "ALTER TABLE `".$prefix."sponsors` ADD `sponsorEnable` TINYINT(1) NULL;";
+    mysqli_select_db($connection,$database);
+    mysqli_real_escape_string($connection,$updateSQL);
+    $result = mysqli_query($connection,$updateSQL) or die (mysqli_error($connection));
 
-	$output .=  "<li>XXX.</li>";
+    $output .=  "<li>XXX.</li>";
 }
 
 
@@ -32,10 +32,10 @@ if (!check_update("sponsorEnable", $prefix."sponsors")) {
 
 // Custom function...
 function convert_yes_no($input) {
-	if ($input == "Y") $return = "1";
-	elseif ($input == "N") $return = "0";
-	else $return = "0";
-	return $return;
+    if ($input == "Y") $return = "1";
+    elseif ($input == "N") $return = "0";
+    else $return = "0";
+    return $return;
 }
 
 
@@ -183,11 +183,11 @@ $output .=  "<li>Judging preferences table updated.</li>";
 
 
 if (!check_update("contestCheckInPassword", $prefix."contest_info")) {
-	$updateSQL = sprintf("ALTER TABLE `%s` ADD `contestCheckInPassword` VARCHAR(255) NULL DEFAULT NULL;",$prefix."contest_info");
-	mysqli_select_db($connection,$database);
-	mysqli_real_escape_string($connection,$updateSQL);
-	$result = mysqli_query($connection,$updateSQL) or die (mysqli_error($connection));
-	$output .=  "<li>Contest info table updated.</li>";
+    $updateSQL = sprintf("ALTER TABLE `%s` ADD `contestCheckInPassword` VARCHAR(255) NULL DEFAULT NULL;",$prefix."contest_info");
+    mysqli_select_db($connection,$database);
+    mysqli_real_escape_string($connection,$updateSQL);
+    $result = mysqli_query($connection,$updateSQL) or die (mysqli_error($connection));
+    $output .=  "<li>Contest info table updated.</li>";
 }
 
 // -----------------------------------------------------------
@@ -614,7 +614,7 @@ $output .= "<li>Styles data updated.</li>";
 // Data Update: Update Version in System Table
 // -----------------------------------------------------------
 
-$updateSQL = sprintf("UPDATE %s SET version='%s', version_date='%s' WHERE id='1'",$prefix."system",$current_version,"2016-05-24");
+$updateSQL = sprintf("UPDATE `%s` SET version='%s', version_date='%s' WHERE id='1'",$prefix."system",$current_version,"2016-05-24");
 mysqli_select_db($connection,$database);
 mysqli_real_escape_string($connection,$updateSQL);
 $result = mysqli_query($connection,$updateSQL) or die (mysqli_error($connection));

@@ -1,0 +1,50 @@
+<div class="col col-lg-9 col-md-8 col-sm-12 col-xs-12">
+   <div class="page-header">
+      <h2>Create Judging Packets:<d></h2>
+   </div>
+   <p class="lead">Hello, Competition. <span class="small">Click or tap the headings or icons below to view the options available in each category.</span></p>
+   <div class="bcoem-admin-dashboard-accordion">
+      <div class="row">
+         <div class="panel-group" id="accordion">
+            <!-- Preparing Panel -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h4 class="panel-title">
+                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseJPackage">Judging Package <span class="fa fa-book pull-right"></span> </a>
+                  </h4>
+                  <div id="collapseJPackage" class="panel-collapse collapse">
+                     <div class="panel-body">
+                        {% for item in cmd_items in bcoe_commands %}
+                        <div class="row">
+                           <div class="col col-lg-5 col-md-4 col-sm-4 col-xs-4">
+                              <strong>{{cmd_items.label}}</strong>
+                           </div>
+                           <div class="col col-lg-7 col-md-8 col-sm-8 col-xs-8">
+                              <ul class="list-inline">
+                                 {% for item in http_action in cmd_items.actions %}
+                                 <li>
+                                    <a href="{$http_action}">{{cmd_label}}</a>
+                                 </li>
+                                 {% endfor %}
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- ./row -->
+                        {% endfor %}
+                     </div>
+
+                     <div class="btn-group" role="group" aria-label="...">
+                     {% for item in pdfs_files in files %}
+                        <a class="btn btn-default"  target="_blank" href="{{http_path}}{{files['file_name']}}"> {{ files['disp_name']}}
+                        <span class="far fa-file"></span></a>
+                     {% endfor %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- ./ Preparing Panel -->
+         </div>
+         <!-- ./ Judging Packet Panel -->
+      </div>
+   </div>
+</div>

@@ -75,7 +75,7 @@ else {
     $nav_container = "navbar-default";
 }
 
-/* 
+/*
  * Load libraries only when needed - for performance
  * Moved to constants.inc.php - 2.1.19
  */
@@ -89,7 +89,7 @@ if ($section == "past-winners") {
     $row_disp_archive_winners = mysqli_fetch_assoc($disp_archive_winners);
     $totalRows_disp_archive_winners = mysqli_num_rows($disp_archive_winners);
     $archive_winner_display = FALSE;
-    
+
     if (($totalRows_disp_archive_winners > 0) && ($row_disp_archive_winners['archiveDisplayWinners'] == "Y") && ($row_disp_archive_winners['archiveStyleSet'] != "")) {
 
         $query_disp_archive_winners = sprintf("SELECT * FROM %s WHERE archiveSuffix='%s'",$prefix."archive",$go);
@@ -230,6 +230,7 @@ $(document).ready(function(){
                 if ($go == "count_by_substyle") include (ADMIN.'entries_by_substyle.admin.php');
                 if ($action == "register") include (SECTIONS.'register.sec.php');
                 if ($go == "upload_scoresheets") include (ADMIN.'upload_scoresheets.admin.php');
+                if ($go == "create_scoresheets") include (ADMIN.'create_scoresheets.admin.php');  // Added by DRF
                 if ($go == "payments") include (ADMIN.'payments.admin.php');
                 if ((EVALUATION) && ($go == "eval")) include (EVALS.'admin.eval.php');
 
@@ -253,24 +254,24 @@ $(document).ready(function(){
             } ?>
     </div><!-- ./container-fluid -->
     <!-- ./Admin Pages -->
-    
-    <?php } elseif ((EVALUATION) && ($section == "evaluation") && ($logged_in)) { 
+
+    <?php } elseif ((EVALUATION) && ($section == "evaluation") && ($logged_in)) {
 
         if (($view == "admin") && ($filter == "default")) $container_eval = "container-fluid";
         else $container_eval = "container";
-    
+
     ?>
-    
+
     <div class="<?php echo $container_eval; ?>">
         <div class="page-header">
                 <h1><?php echo $header_output; ?></h1>
             </div>
-        <?php 
+        <?php
             if ($go == "default") include (EVALS.'default.eval.php');
             if ($go == "scoresheet") include (EVALS.'scoresheet.eval.php');
         ?>
     </div><!-- ./container-fluid -->
-    
+
     <?php } else { ?>
     <!-- Public Pages (Fixed Layout with Sidebar) -->
     <div id="main-content" class="container">

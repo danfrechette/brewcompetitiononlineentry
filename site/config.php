@@ -30,7 +30,7 @@ $hostname = "localhost";
  * For example, if your username is fred then the line should read $username = "fred".
  */
 
-$username = "";
+$username = "root";
 
 /**
  * INSERT YOUR PASSWORD BETWEEN THE SINGLE-QUOTATION MARKS ('').
@@ -38,7 +38,7 @@ $username = "";
  * $password = 'flintsone'.
  */
 
-$password = '';
+$password = "mysql";
 
 /**
  * The following line is the name of your MySQL database you set up already.
@@ -46,7 +46,7 @@ $password = '';
  * http://brewcompetition.com/install-instructions for setup instructions.
  */
 
-$database = "";
+$database = "bcoe";
 
 /**
  * If the database port is different from the default then overwrite as the 
@@ -161,7 +161,7 @@ $setup_free_access =  FALSE;
  * .htaccess file.
  */
 
-$sub_directory = "";
+$sub_directory = "/bcoe";
 
 /*
  * ******************************************************************************

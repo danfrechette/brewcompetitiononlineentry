@@ -82,14 +82,14 @@ define('CDN', TRUE);
  * Default is FALSE.
  */
 
-define('TESTING', FALSE);
+define('TESTING', TRUE);
 
 /**
  * Enable the following to display php errors on screen.
  * Default is FALSE.
  */
 
-define('DEBUG', FALSE);
+define('DEBUG', TRUE);
 
 /**
  * Enable the following to show a collapsable table of all
@@ -97,7 +97,7 @@ define('DEBUG', FALSE);
  * Default is FALSE.
  */
 
-define('DEBUG_SESSION_VARS', FALSE);
+define('DEBUG_SESSION_VARS', TRUE);
 
 /**
  * Enable the following when receiving mySQL "column does
@@ -240,8 +240,8 @@ if (HOSTED) {
 }
 
 else {
-    $public_captcha_key = "6LfHUCoUAAAAACHsPn8hpzbtzcpXatm-GXTTWuR3";
-    $private_captcha_key = "6LfHUCoUAAAAACNL-wzpAG3eIWQC-PpX6X3a0iaM";
+    $public_captcha_key = "6LdRIjUbAAAAADUoaKIuYLuYlAM9_304Ry_ejhy7";
+    $private_captcha_key = "6LdRIjUbAAAAADUoaKIuYLuYlAM9_304Ry_ejhy7";
 }
 
 /** Uncomment to display paths */

@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-sm-4"> {{ label }}: </div>    
+    <div class="col-sm-8">    
+        <div id="" class = "btn-group btn-group-xs" data-id="{{ id }}" data-url="{{ url }}">
+        {% for button in buttons %}
+            <button data-value="{{ button.index }}" type="button" class="btn btn-primary {% if button.active  %} btn-success {% endif %}"> {{ button.label }} </button>
+        {% endfor %}
+        </div>
+        {% if helpmsg %}
+        <span class="hide-loader fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="auto top" data-content="{{ helpmsg }}"></span>   
+        {% endif %}
+    </div>
+</div>

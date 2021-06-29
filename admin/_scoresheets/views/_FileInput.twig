@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8">
+        <form method="post" action="http://localhost/bcoe/handle.php?action=html" enctype="multipart/form-data">
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+                <span class="btn btn-default btn-xs btn-file">
+                    <span> {{ label }} <span class="fa fa-upload"></span></span>
+                    <input id='{{ id }}' type="file" name="file" onchange="upload_image(this)"/> 
+                </span>
+                <span class="hide-loader fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="auto top" data-content="{{ info }}"> </span> 
+            </div>
+        </form>        
+        
+    </div>
+</div> <!-- end of Row -->    
+
+    
