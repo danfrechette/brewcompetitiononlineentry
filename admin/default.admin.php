@@ -677,6 +677,32 @@ if (($row_limits['prefsShowBestBrewer'] != 0) || ($row_limits['prefsShowBestClub
                         </div>
                     </div>
                 </div><!-- ./ Organizing Panel -->
+
+                <!-- Scoresheet Panel --> <!-- Added By DRF -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseScrsht">Scoresheets<span class="fa fa-tasks pull-right"></span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseScrsht" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <strong>Packets</strong>
+                                </div>
+                                <div class="col col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <ul class="list-inline">
+                                        <li><a href="<?php echo $base_url; ?>index.php?section=admin&amp;action=assign&amp;go=create_scoresheets&amp;filter=packet">????1</a></li>
+                                        <li><a href="<?php echo $base_url; ?>index.php?section=admin&amp;action=assign&amp;go=create_scoresheets&amp;filter=styles">????2</a></li>
+                                        <li><a href="<?php echo $base_url; ?>index.php?section=admin&amp;action=assign&amp;go=create_scoresheets&amp;filter=entry">????3</a></li>
+                                    </ul>
+                                </div>
+                            </div><!-- ./row -->
+                        </div>
+                    </div>
+                </div><!-- ./ Scoresheet Panel -->
+
                 <!-- Scoring Panel -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
